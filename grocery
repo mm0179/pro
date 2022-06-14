@@ -11,9 +11,14 @@ int main()
     struct details
     {
         char name[20];
-        int price;
-        int quantity;
+        int unitprice;
+        int quantityinhand;
         struct date mfg;
+        char category[20];
+        int orders;
+        int quantitysold;
+        char soldto[20];
+        int noofunits;
     };
     struct details item[50];
     int n, i;
@@ -27,23 +32,37 @@ int main()
         printf("Item name: \n");
         scanf("%s",item[i].name);
         fflush(stdin);
-        printf("Quantity: \n");
-        scanf("%d",&item[i].quantity);
+        printf("Unit price: \n");
+        scanf("%d",&item[i].unitprice);
         fflush(stdin);
-        printf("Price: \n");
-        scanf("%d",&item[i].price);
+        printf("Quantity in hand: \n");
+        scanf("%d",&item[i].quantityinhand);
         fflush(stdin);
         printf("Manufacturing date(dd-mm-yyyy): \n");
-        scanf("%d-%d-%d", &item[i].mfg.day,
-        &item[i].mfg.month, &item[i].mfg.year);
-    }
-    printf("                         *****  INVENTORY  *****                  \n");
-    printf("------------------------------------------------------------------\n");
-    printf("S.N.|          NAME           |  QUANTITY   |  PRICE |   MFG.DATE \n");
-    printf("------------------------------------------------------------------\n");
-    for (i = 0; i < n; i++)
-    printf("%d     %-15s             %-5d         %-5d  %d/%d/%d \n", i + 1, item[i].name, item[i].quantity ,item[i].price, item[i].mfg.day, item[i].mfg.month, item[i].mfg.year);
-    printf("------------------------------------------------------------------\n");
+        scanf("%d-%d-%d", &item[i].mfg.day, &item[i].mfg.month, &item[i].mfg.year);
+        fflush(stdin);
+        printf("Category: \n");
+        scanf("%s",item[i].category);
+        fflush(stdin);
+        printf("Orders: \n");
+        scanf("%d",&item[i].orders);
+        fflush(stdin);
+        printf("Quantity sold: \n");
+        scanf("%d",&item[i].quantitysold);
+        fflush(stdin);
+        printf("Sold to: \n");
+        scanf("%s",item[i].soldto);
+        fflush(stdin);
+        printf("No of units: \n");
+        scanf("%d",&item[i].noofunits);
+    }  
+    printf("                                                                            *****  INVENTORY  *****                                            \n");
+    printf("-----------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("S.N.|    NAME       |  UNIT PRICE  |  QUANTITY IN HAND  |   MFG.DATE  |  CATEGORY  | ORDERS | QUANTITY SOLD | SOLD TO | NO OF UNITS |\n");
+    printf("-----------------------------------------------------------------------------------------------------------------------------------------------\n");
+    for (i = 0; i < n; i++) 
+    printf("%d       %s              %d                 %d                  %d/%d/%d        %s            %d           %d           %s          %d\n", i + 1, item[i].name, item[i].unitprice ,item[i].quantityinhand, item[i].mfg.day, item[i].mfg.month, item[i].mfg.year, item[i].category, item[i].orders, item[i].quantitysold, item[i].soldto, item[i].noofunits);
+    printf("-----------------------------------------------------------------------------------------------------------------------------------------------\n");
 
 return 0;
 }
